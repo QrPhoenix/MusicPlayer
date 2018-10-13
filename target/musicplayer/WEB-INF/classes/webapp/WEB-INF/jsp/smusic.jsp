@@ -1,0 +1,154 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: 齐析屿
+  Date: 2018/10/13
+  Time: 11:55
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <%--<meta name="author" content="smohan">--%>
+    <%--<meta name="homepage" content="https://smohan.net">--%>
+    <title>Smuisc</title>
+    <link rel="stylesheet" href="/css/smusic.min.css">
+    <!--<link rel="stylesheet" href="../src/css/smusic.css"> -->
+    <style>
+        body {
+            padding: 20px;
+            background-color: #2e86ef;
+            font: 14px / 1.5 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'Microsoft Yahei', Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #fff;
+            text-align: center;
+        }
+
+        /*.homepage {*/
+            /*color: #fff;*/
+            /*text-align: center;*/
+            /*font-size: 18px;*/
+        /*}*/
+
+        /*.homepage a {*/
+            /*color: #fff;*/
+        /*}*/
+
+        .wrapper {
+            width: 640px;
+            margin: 60px auto;
+        }
+
+        #smusic {
+            margin-bottom: 30px;
+        }
+
+        /*.button-group {*/
+            /*text-align: center;*/
+        /*}*/
+
+        /*.button-group button {*/
+            /*display: inline-block;*/
+            /*height: 36px;*/
+            /*line-height: 20px;*/
+            /*padding: 8px 16px;*/
+            /*min-width: 100px;*/
+            /*text-align: center;*/
+            /*border: 1px solid #ccc;*/
+            /*cursor: pointer;*/
+            /*font: inherit;*/
+        /*}*/
+
+        /*.button-group button:disabled {*/
+            /*opacity: .5;*/
+            /*cursor: not-allowed;*/
+        /*}*/
+
+        /*.gitbtns {*/
+            /*margin: 20px;*/
+            /*text-align: center;*/
+        /*}*/
+
+        /*.gitbtns iframe {*/
+            /*display: inline;*/
+            /*width: auto;*/
+            /*max-width: 120px;*/
+        /*}*/
+    </style>
+</head>
+
+<body>
+
+<h1>Smusic</h1>
+<%--<p class="homepage">项目地址: <a href="https://smohan.net/lab/smusic" target="_blank">https://smohan.net/lab/smusic</a></p>--%>
+<%--<div class="gitbtns">--%>
+    <%--<iframe src="https://ghbtns.com/github-btn.html?user=S-mohan&repo=smusic&type=star&count=true" frameborder="0" scrolling="0"--%>
+            <%--height="20px"></iframe>--%>
+    <%--<iframe src="https://ghbtns.com/github-btn.html?user=S-mohan&repo=smusic&type=fork&count=true" frameborder="0" scrolling="0"--%>
+            <%--height="20px"></iframe>--%>
+<%--</div>--%>
+<article class="wrapper">
+    <div id="smusic"></div>
+    <%--<div class="button-group">--%>
+        <%--<button id="getCurrentMusic">获取当前播放歌曲</button>--%>
+        <%--<button id="addMusicToList">向列表中添加音乐</button>--%>
+    <%--</div>--%>
+    <%--<p style="color: #fff; text-align: center;">请打开控制台(F12)查看</p>--%>
+</article>
+
+
+<script src="/js/songList.js"></script>
+<script src="/js/mo.js"></script>
+<script src="/js/smusic.js"></script>
+<!-- <script src="../build/smusic.min.js"></script> -->
+<script>
+    var $ = function (id) {
+        return document.getElementById(id)
+    }
+
+    var smusic = SMusic(songList, {
+        container: $('smusic'),
+        panel: 'list'
+    });
+    smusic.init();
+
+
+
+    var newSong = {
+        title: '向天再借五百年',
+        singer: '韩磊',
+        audio: 'http://m2.music.126.net/9Xuqj6SBQr9d_i-wyy_FBA==/3118214976442555.mp3',
+        thumbnail: 'http://p1.music.126.net/MsjB1mwEjSzidqcesbwz3w==/591537255755598.jpg',
+        lyric: null
+    };
+
+//    $('getCurrentMusic').addEventListener('click', function () {
+//        var data = smusic.getCurrentInfo();
+//        var info = '';
+//        if (data) {
+//            for (var k in data) {
+//                if (['audio', 'lyric', 'thumbnail'].indexOf(k) === -1) {
+//                    info += (k + '：' + data[k] + '\n');
+//                }
+//            }
+//            console.info(info);
+//        }
+//    });
+
+//    $('addMusicToList').addEventListener('click', function () {
+//        console.log("追加前：" + smusic.playList.length + "首");
+//        smusic.addSong(newSong, function () {
+//            newSong = null; //防止重复追加
+//        });
+//        this.setAttribute('disabled', 'disabled');
+//        console.log("追加后：" + smusic.playList.length + "首")
+//    });
+
+</script>
+</body>
+
+</html>
