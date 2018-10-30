@@ -1,0 +1,616 @@
+html {
+    /*Copy from [Hux 黄玄's Github](https://github.com/Huxpro/huxpro.github.io)*/
+    font-family: -apple-system, -apple-system-font, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+}
+
+body {
+    background: #EFEFF4;
+    -webkit-backface-visibility: hidden;
+}
+
+body.disableScroll {
+    overflow: hidden;
+}
+
+/*.tip-overlay {*/
+    /*position: fixed;*/
+    /*height: 100%;*/
+    /*width: 100%;*/
+    /*display: none;*/
+    /*overflow-y: scroll;*/
+    /*overflow-x: hidden;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*z-index: 100;*/
+    /*background-color: rgba(0, 0, 0, .42);*/
+    /*-webkit-backdrop-filter: blur(30px);*/
+/*}*/
+
+/*noscript.tip-overlay {*/
+    /*display: block;*/
+/*}*/
+
+.tip-container {
+    color: #ffffff;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 0 1em;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    position: relative;
+    top: 30%;
+}
+
+.tip-container a {
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid #08C;
+    color: #08C;
+}
+
+.tip-container a + a {
+    margin-left: 2em;
+}
+
+.wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    max-width: 736px;
+    min-width: 320px;
+    height: 100%;
+    min-height: 320px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    background-color: #aaa;
+}
+
+.wrapper-background {
+    position: absolute;
+    height: 120%;
+    width: 120%;
+    top: -10%;
+    left: -10%;
+    z-index: 0;
+    background: url("../images/Like I Used To.jpg") no-repeat 50% 50%;
+    background-size: cover;
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
+}
+
+@media screen and (min-width: 1020px) {
+    .wrapper-background {
+        -webkit-filter: blur(30px);
+        filter: blur(30px);
+    }
+}
+
+.lyric-controller {
+    position: relative;
+    z-index: 1;
+    color: #ffffff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.42);
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.22);
+}
+
+.lyric-controller-inner {
+    height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+    z-index: 0;
+}
+
+.lyric-info {
+    -webkit-box-flex: 0;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+    position: relative;
+    z-index: 100;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.lyric-albumart {
+    height: 60px;
+    width: 60px;
+    -webkit-box-flex: 0;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+    margin-right: 1em;
+    background: url("../images/Like I Used To.jpg") no-repeat 50% 50%;
+    background-size: contain;
+}
+
+.music-info {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+    -webkit-flex-flow: column;
+    -ms-flex-flow: column;
+    flex-flow: column;
+}
+
+/*.lyric-title {*/
+    /*margin: 0;*/
+    /*font-size: 1.2em;*/
+    /*font-weight: 400;*/
+/*}*/
+
+/*.lyric-author {*/
+    /*margin: 0;*/
+    /*font-size: 1em;*/
+    /*font-weight: 300;*/
+    /*color: #eee;*/
+/*}*/
+
+.lyric-text {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    position: relative;
+    text-align: center;
+}
+
+.lyric-text > p {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.lyric-text > p.currentLrc {
+    -webkit-animation-name: moveLrc;
+    animation-name: moveLrc;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+
+@-webkit-keyframes moveLrc {
+    0% {
+        -webkit-transform: translateY(18vh);
+        transform: translateY(18vh);
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: translateY(-30vh);
+        transform: translateY(-30vh);
+        opacity: 0;
+    }
+}
+
+@keyframes moveLrc {
+    0% {
+        -webkit-transform: translateY(18vh);
+        transform: translateY(18vh);
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: translateY(-30vh);
+        transform: translateY(-30vh);
+        opacity: 0;
+    }
+}
+
+.music-player-controller {
+    position: relative;
+    -webkit-box-flex: 0;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+    top: 0;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px 12px;
+    z-index: 100;
+}
+
+.lyric-info,
+.music-player-controller {
+    background-color: rgba(255, 255, 255, 0.3);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.music-player-controller-inner {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.music-player-controller-inner {
+    display: none;
+}
+
+.music-player-controller-loading {
+    width: 100%;
+    height: 57px;
+}
+
+.slide-bar,
+.control-panel {
+    color: rgba(0, 0, 0, .64);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.slide-bar {
+    height: 25px;
+    width: 100%;
+    will-change: color, text-shadow;
+    -webkit-transition: color .1s cubic-bezier(0.4, 0, 1, 1) .1s, text-shadow .1s cubic-bezier(0.4, 0, 1, 1) .1s;
+    transition: color .1s cubic-bezier(0.4, 0, 1, 1) .1s, text-shadow .1s cubic-bezier(0.4, 0, 1, 1) .1s;
+}
+
+.slide-bar.seeking {
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.80);
+    color: #ffffff;
+}
+
+.slide-bar > span {
+    display: inline-block;
+}
+
+.forward-speed,
+.backward-speed,
+.current-time,
+.total-time {
+    font-size: 12px;
+    font-weight: normal;
+    -webkit-user-select: none;
+    cursor: default;
+}
+
+.current-time,
+.total-time {
+    line-height: 25px;
+    width: 40px;
+}
+
+.current-time {
+    text-align: left;
+}
+
+.total-time {
+    text-align: right;
+}
+
+.slider-container {
+    position: relative;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    height: 25px;
+}
+
+.progress-indicator {
+    position: absolute;
+    overflow: visible;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    color: transparent;
+    border: 0 none;
+    background: transparent;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    z-index: 1;
+}
+
+.progress-indicator:focus {
+    outline: none;
+}
+
+.progress-indicator::-webkit-slider-runnable-track {
+    background: transparent;
+}
+
+.progress-indicator::-moz-range-track {
+    background: transparent;
+}
+
+.progress-indicator::-webkit-slider-thumb {
+    position: relative;
+    top: -200%;
+    width: 15px;
+    height: 15px;
+    border: none;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 0 1px 0 #333, 0 5px 2px -2px rgba(0, 0, 0, .4);
+
+    -webkit-appearance: none;
+}
+
+.progress-indicator::-moz-range-thumb {
+    position: relative;
+    top: -200%;
+    width: 15px;
+    height: 15px;
+    border: none;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 0 1px 0 #333, 0 5px 2px -2px rgba(0, 0, 0, .4);
+}
+
+.slider-runnable-track {
+    position: absolute;
+    z-index: 0;
+    top: 11px;
+    width: 100%;
+    height: 3px;
+    border-radius: 3px;
+    background: -webkit-linear-gradient(left,
+    rgba(255, 255, 255, .62) 0%,
+    rgba(255, 255, 255, .62) 0%,
+    rgba(0, 0, 0, .62) 0%,
+    rgba(0, 0, 0, .62) 100%);
+    background: linear-gradient(90deg,
+    rgba(255, 255, 255, .62) 0%,
+    rgba(255, 255, 255, .62) 0%,
+    rgba(0, 0, 0, .62) 0%,
+    rgba(0, 0, 0, .62) 100%);
+    will-change: background;
+}
+
+.control-panel {
+    box-sizing: border-box;
+    height: 26px;
+    margin: 6px auto 0 auto;
+    width: 196px;
+}
+
+.forward-speed,
+.backward-speed {
+    line-height: 26px;
+    width: 15px;
+    visibility: hidden;
+}
+
+.forward-speed::after,
+.backward-speed::after {
+    content: "x";
+}
+
+.forward-speed {
+    text-align: right;
+}
+
+.backward-speed {
+    text-align: left;
+}
+
+.control-panel .buttons {
+    margin: 0 10px;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.control-panel .buttons.center {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.control-panel .buttons input {
+    -webkit-appearance: none;
+    padding: 0;
+    margin: 0;
+    border: 0 none;
+    color: transparent;
+    background-color: transparent;
+    width: 26px;
+    height: 26px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    background-image: url("../images/player_icons_sprite.svg");
+    background-size: 78px 104px;
+    background-repeat: no-repeat;
+}
+
+.control-panel .buttons input:focus {
+    outline: none;
+}
+
+.control-panel .buttons input.disable {
+    cursor: default;
+}
+
+.forward-button {
+    background-position: 0 0;
+}
+
+.play-pause-button[value="play"] {
+    background-position: 0 -52px;
+}
+
+.play-pause-button[value="pause"] {
+    background-position: 0 -52px;
+}
+
+.backward-button {
+    background-position: 0 -78px;
+}
+
+.music-player-controller:not(.no-touch) .forward-button:active,
+.no-touch .forward-button:hover {
+    background-position: -26px 0;
+}
+
+.music-player-controller:not(.no-touch) .play-pause-button[value="play"]:active,
+.no-touch .play-pause-button[value="play"]:hover {
+    background-position: -26px -26px;
+}
+
+.music-player-controller:not(.no-touch) .play-pause-button[value="pause"]:active,
+.no-touch .play-pause-button[value="pause"]:hover {
+    background-position: -26px -52px;
+}
+
+.music-player-controller:not(.no-touch) .backward-button:active,
+.no-touch .backward-button:hover {
+    background-position: -26px -78px;
+}
+
+.forward-button:disabled,
+.forward-button:disabled:active,
+.forward-button:disabled:hover {
+    background-position: -52px 0;
+}
+
+.play-pause-button[value="play"]:disabled,
+.play-pause-button[value="play"]:disabled:active,
+.play-pause-button[value="play"]:disabled:hover {
+    background-position: -52px -26px;
+}
+
+.play-pause-button[value="pause"]:disabled,
+.play-pause-button[value="pause"]:disabled:active,
+.play-pause-button[value="pause"]:disabled:hover {
+    background-position: -52px -52px;
+}
+
+.backward-button:disabled,
+.backward-button:disabled:active,
+.backward-button:disabled:hover {
+    background-position: -52px -78px;
+}
+
+.no-backdrop-filter.white {
+    background-color: rgba(255, 255, 255, .82);
+}
+
+.no-backdrop-filter.black {
+    background-color: rgba(0, 0, 0, .92);
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.visible {
+    visibility: visible;
+}
+
+@media screen and (min-width: 568px) {
+    .wrapper {
+        max-width: 100%;
+    }
+
+    .lyric-controller {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+    }
+
+    /*.lyric-info {*/
+        /*width: 140px;*/
+        /*-webkit-box-flex: 0;*/
+        /*-webkit-flex: none;*/
+        /*-ms-flex: none;*/
+        /*flex: none;*/
+        /*-webkit-box-orient: vertical;*/
+        /*-webkit-box-direction: normal;*/
+        /*-webkit-flex-direction: column;*/
+        /*-ms-flex-direction: column;*/
+        /*flex-direction: column;*/
+        /*background-color: rgba(0, 0, 0, 0.3);*/
+    /*}*/
+
+    /*.lyric-albumart {*/
+        /*height: 140px;*/
+        /*width: 140px;*/
+    /*}*/
+
+    /*.music-info {*/
+        /*display: block;*/
+        /*padding: 1em 0.8em;*/
+        /*box-sizing: border-box;*/
+    /*}*/
+
+    /*.music-info > h1 {*/
+        /*margin: 0.67em 0;*/
+    /*}*/
+
+    /*.music-info > h2 {*/
+        /*margin: 0.83em 0;*/
+    /*}*/
+
+    .lyric-controller-inner {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+}

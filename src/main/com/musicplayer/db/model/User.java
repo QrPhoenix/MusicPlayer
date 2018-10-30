@@ -1,33 +1,64 @@
 package com.musicplayer.db.model;
 
 public class User {
-    private Integer id;
-
-    private String username;
-
+	private Integer id;    
+    
+    private String name;    
+    
     private String password;
-
-    public Integer getId() {
-        return id;
+    
+    private Integer state;
+    
+    private Integer isAdmin;
+    
+    private String pic;//用户头像
+    
+    public Integer getId() {    
+        return id;    
+    }    
+    
+    public void setId(Integer id) {    
+        this.id = id;    
+    }    
+    
+    public String getName() {    
+        return name;    
+    }    
+    
+    public void setName(String name) {    
+        this.name = name;    
+    }    
+    
+    public String getPassword() {    
+        return password;    
+    }    
+    
+    public void setPassword(String password) {    
+        this.password = password == null ? null : password.trim();    
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public Integer getState() {
+		return state;
+	}
 
-    public String getUsername() {
-        return username;
-    }
+	public void setState(Integer state) {
+		this.state = state;
+	}
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
-    }
+	public Integer getIsAdmin() {
+		return isAdmin;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public void setIsAdmin(Integer isAdmin) {
+		this.isAdmin = isAdmin;
+	}
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
-    }
+	public String getPic() {
+		return pic;
+	}
+
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
+
 }

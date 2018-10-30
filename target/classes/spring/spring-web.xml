@@ -39,4 +39,6 @@
     <mvc:resources mapping="/css/**" location="css/"/>
     <mvc:resources mapping="/songs/**" location="songs/"/>
     <mvc:resources mapping="/lyrics/**" location="lyrics/"/>
+    <mvc:resources mapping="/imgmz/**" location="imgmz/"/>
+    <mvc:resources mapping="/yq/**" location="yq/"/>
 </beans>

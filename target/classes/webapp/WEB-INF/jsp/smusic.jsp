@@ -93,30 +93,27 @@
 <%--</div>--%>
 <article class="wrapper">
     <div id="smusic"></div>
-    <%--<div class="button-group">--%>
-        <%--<button id="getCurrentMusic">获取当前播放歌曲</button>--%>
-        <%--<button id="addMusicToList">向列表中添加音乐</button>--%>
-    <%--</div>--%>
+    <div class="button-group">
+        <button id="getCurrentMusic">获取当前播放歌曲</button>
+        <button class="button-1" id="addMusicToList">向列表中添加音乐</button>
+    </div>
     <%--<p style="color: #fff; text-align: center;">请打开控制台(F12)查看</p>--%>
 </article>
-
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script src="/js/songList.js"></script>
 <script src="/js/mo.js"></script>
 <script src="/js/smusic.js"></script>
 <!-- <script src="../build/smusic.min.js"></script> -->
 <script>
-    var $ = function (id) {
+
+
+    var $1 = function (id) {
         return document.getElementById(id)
     }
-
-    var smusic = SMusic(songList, {
-        container: $('smusic'),
-        panel: 'list'
-    });
-    smusic.init();
-
-
 
     var newSong = {
         title: '向天再借五百年',
@@ -126,27 +123,27 @@
         lyric: null
     };
 
-//    $('getCurrentMusic').addEventListener('click', function () {
-//        var data = smusic.getCurrentInfo();
-//        var info = '';
-//        if (data) {
-//            for (var k in data) {
-//                if (['audio', 'lyric', 'thumbnail'].indexOf(k) === -1) {
-//                    info += (k + '：' + data[k] + '\n');
-//                }
-//            }
-//            console.info(info);
-//        }
-//    });
+    $1('getCurrentMusic').addEventListener('click', function () {
+        var data = smusic.getCurrentInfo();
+        var info = '';
+        if (data) {
+            for (var k in data) {
+                if (['audio', 'lyric', 'thumbnail'].indexOf(k) === -1) {
+                    info += (k + '：' + data[k] + '\n');
+                }
+            }
+            console.info(info);
+        }
+    });
 
-//    $('addMusicToList').addEventListener('click', function () {
-//        console.log("追加前：" + smusic.playList.length + "首");
-//        smusic.addSong(newSong, function () {
-//            newSong = null; //防止重复追加
-//        });
-//        this.setAttribute('disabled', 'disabled');
-//        console.log("追加后：" + smusic.playList.length + "首")
-//    });
+    $1('addMusicToList').addEventListener('click', function () {
+        console.log("追加前：" + smusic.playList.length + "首");
+        smusic.addSong(newSong, function () {
+            newSong = null; //防止重复追加
+        });
+        this.setAttribute('disabled', 'disabled');
+        console.log("追加后：" + smusic.playList.length + "首")
+    });
 
 </script>
 </body>

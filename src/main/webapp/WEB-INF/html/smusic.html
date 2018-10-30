@@ -99,12 +99,12 @@
     <script src="../src/js/smusic.js"></script>
     <!-- <script src="../build/smusic.min.js"></script> -->
     <script>
-        var $ = function (id) {
+        var $1 = function (id) {
             return document.getElementById(id)
         }
 
         var smusic = SMusic(songList, {
-            container: $('smusic'),
+            container: $1('smusic'),
             panel: 'list'
         });
         smusic.init();
@@ -119,7 +119,7 @@
             lyric: null
         };
 
-        $('getCurrentMusic').addEventListener('click', function () {
+        $1('getCurrentMusic').addEventListener('click', function () {
             var data = smusic.getCurrentInfo();
             var info = '';
             if (data) {
@@ -132,7 +132,7 @@
             }
         });
 
-        $('addMusicToList').addEventListener('click', function () {
+        $1('addMusicToList').addEventListener('click', function () {
             console.log("追加前：" + smusic.playList.length + "首");
             smusic.addSong(newSong, function () {
                 newSong = null; //防止重复追加
