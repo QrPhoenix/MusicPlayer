@@ -27,6 +27,7 @@ public class HomePageController {
         }
         else
         {
+            model.addAttribute("username", user.getName());
             mv.setViewName("home");
 
         }

@@ -79,7 +79,15 @@ public class loginController {
 			mv.setViewName("login");
 		}
         return mv;    
-    } 
+    }
+
+	@RequestMapping("/logout")
+	public ModelAndView logout(HttpServletRequest request,
+							   HttpServletResponse response){
+		HttpSession session = request.getSession();
+		session.removeAttribute(Constant.LOGIN_SYSTEM_USER);
+		return new ModelAndView("login");
+	}
 	
 //	@RequestMapping("/mainFrame")
 //	public ModelAndView mainFrame(HttpServletRequest request,

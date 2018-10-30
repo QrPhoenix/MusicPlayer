@@ -21,9 +21,11 @@
 <%--最顶部蓝条--%>
 <div  class="topBg"style="background-image: url('/images/header1.png');">
     welcome! &nbsp
-    <a herf="">会员登录</a>
+    <a herf="">${username}</a>
     &nbsp
-    <a herf="">会员注册</a>
+    <a herf="">个人中心</a>
+
+    <a href="/logout" class="btn btn-default">退出登录</a>
 </div>
 <%--图片文字标题--%>
 <img src="/images/logo.jpg">
